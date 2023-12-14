@@ -1,5 +1,7 @@
+# Importa conexion.py
 from conexion import *
 
+# Funciónm registar un libro
 def registar(titulo, autor, estado):
     try:
         con = conectar()
@@ -14,7 +16,8 @@ def registar(titulo, autor, estado):
     except mysql.Error as err:
         print("Ha ocurrido un error", err)
    
-        
+
+# Funcion mostrar: nos permite mostar los libros 
 def mostrar():
     datos = []
     try: 
@@ -28,6 +31,7 @@ def mostrar():
         print("Ha ocurrido un error", err)
     return datos
 
+# Nos permite buscar libros
 def buscar(id):
     datos = []
     try:
@@ -41,7 +45,7 @@ def buscar(id):
         print("Ha ocurrido un error", err)
     return datos
 
-
+# Nos permite moficar libros
 def modificar(id, campo, nuevo_valor):
     try:
         sentencia_sql = ""
@@ -61,7 +65,8 @@ def modificar(id, campo, nuevo_valor):
     except mysql.Error as err:
         print("Ha ocurrido un error", err)
         
-        
+       
+# Nos permite eliminar un libro 
 def eliminar(id):
     try:
         con = conectar()

@@ -1,5 +1,7 @@
+# Iimporta el módulo MYSQL
 import mysql.connector as  mysql
 
+# Crea la conexión
 def conectar():
     try:
         conexion = mysql.connect(

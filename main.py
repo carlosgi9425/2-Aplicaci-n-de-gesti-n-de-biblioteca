@@ -1,10 +1,13 @@
+# Impor los módulos
 import os 
 from tabulate import tabulate
 from conexion import *
 from libro import *
 
+#Importa la conexión
 con = conectar()
 
+# Inicia el menú
 def iniciar():
     os.system("cls")
     while True:
@@ -32,19 +35,22 @@ def iniciar():
             print(" Escoja una opción correcta")
         
 
+# Permite agregar un nuevo libro
 def nuevo_libro():
     titulo = input("Ingrese el titulo del libro: ")
     autor = input("Ingrese el nombre del autor: ")
     estado = "Disponible"
     respuesta = registar(titulo, autor, estado)
     print(respuesta)
-    
+ 
+# Muestra los libros   
 def ver_libros():
     datos = mostrar()
     headers = ["ID", "TITULO", "AUTOR", "ESTADO"]
     tabla = tabulate(datos, headers, tablefmt="fancy_grid")
     print(tabla)
  
+# Busca un libro por su ID 
 def buscar_libro():
     id = input("Ingrese el ID del libro: ")
     datos = buscar(id)
@@ -52,6 +58,7 @@ def buscar_libro():
     tabla = tabulate(datos, headers, tablefmt="fancy_grid")
     print(tabla)
 
+# Permite moficvar un libro por su ID
 def modificar_libro():
     id = input("Ingrese el ID del libro a modficar: ")
     nuevo_valor= ""
@@ -65,7 +72,8 @@ def modificar_libro():
         nuevo_valor = input("Ingrese el nuevo Estado del libro")    
     respuesta = modificar(id, campo, nuevo_valor)
     print(respuesta)
-    
+
+# Elimina un libro 
 def eliminar_libro():
         id = input("Ingrese el ID del libro a eliminar: ")
         respuesta = eliminar(id)
